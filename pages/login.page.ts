@@ -1,6 +1,6 @@
 // pages/login.page.ts
 import { Page, Locator } from '@playwright/test';
-import { BasePage } from '@pages/Base.Page';
+import { BasePage } from '@pages/base.page';
 
 // Define interfaces
 export interface LoginCredentials {

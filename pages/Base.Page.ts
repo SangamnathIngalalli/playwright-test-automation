@@ -1,11 +1,17 @@
 // pages/base.page.ts
 import { Page, Locator, Response } from '@playwright/test';
+import { HeaderComponent } from './components/HeaderComponent';
+import { FooterComponent } from './components/FooterComponent';
 
 export class BasePage {
-  protected page: Page;
+  readonly header: HeaderComponent;
+  readonly footer: FooterComponent;
 
-  constructor(page: Page) {
-    this.page = page;
+
+  constructor(protected page: Page) {
+    this.header = new HeaderComponent(page);
+    this.footer = new FooterComponent(page);
+
   }
 
   /**
