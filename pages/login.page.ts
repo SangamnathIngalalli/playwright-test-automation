@@ -1,5 +1,5 @@
 // pages/login.page.ts
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 import { BasePage } from '@pages/base.page';
 
 // Define interfaces
@@ -58,4 +58,18 @@ export class LoginPage extends BasePage {
     await this.loginPasswordInput.fill(credentials.password);
     await this.loginButton.click();
   }
+
+
+    // ───────── Assertions ─────────
+
+  async assertOnLoginPage(): Promise<void> {
+    await this.expectTitle(/Automation Exercise - Signup \/ Login/i);
+  }
+
+
+   // Expose assertions as methods
+    async assertSignupFormVisible(): Promise<void> {
+      await expect(this.nameInput).toBeVisible();
+      await expect(this.signupButton).toBeVisible();
+    }
 }

@@ -1,5 +1,5 @@
 // pages/base.page.ts
-import { Page, Locator, Response } from '@playwright/test';
+import { Page, Locator, Response, expect } from '@playwright/test';
 import { HeaderComponent } from './components/HeaderComponent';
 import { FooterComponent } from './components/FooterComponent';
 
@@ -12,6 +12,10 @@ export class BasePage {
     this.header = new HeaderComponent(page);
     this.footer = new FooterComponent(page);
 
+  }
+
+  get Page(): Page {
+    return this.page;
   }
 
   /**
@@ -176,4 +180,20 @@ export class BasePage {
     const elements = this.page.locator(selector);
     return await elements.allTextContents();
   }
+
+
+    async expectTitle(title: string | RegExp): Promise<void> {
+    await expect(this.page).toHaveTitle(title);
+  }
+
+
+    async waitForURL(urlOrPattern: string | RegExp, options?: { timeout?: number }): Promise<void> {
+    await this.page.waitForURL(urlOrPattern, options);
+  }
+
+    async expectURL(urlOrPattern: string | RegExp, options?: { timeout?: number }) {
+    await expect(this.page).toHaveURL(urlOrPattern, options);
+  }
+
+  
 }

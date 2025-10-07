@@ -33,7 +33,9 @@
       "@pages/*": ["pages/*"],
       "@api/*": ["api/*"],
       "@utils/*": ["utils/*"],
-      "@config/*": ["config/*"]
+      "@config/*": ["config/*"],
+      "@fixtures/*": ["fixtures/*"],
+
     },
     "esModuleInterop": true,
     "resolveJsonModule": true,
@@ -62,7 +64,8 @@
     "pages/**/*.ts",
     "api/**/*.ts",
     "utils/**/*.ts",
-    "config/**/*.ts"
+    "config/**/*.ts",
+    "fixtures/**/*.ts",
   ],
   "exclude": [
     "node_modules",
