@@ -1,0 +1,20 @@
+{
+  "validUser": {
+    "title": "Mr",
+    "password": "Test@1234",
+    "days": "10",
+    "months": "5",
+    "years": "1990",
+    "newsletter": true,
+    "optin": false,
+    "firstName": "Sangam",
+    "lastName": "Kumar",
+    "company": "MyCompany",
+    "address1": "123 Main St",
+    "country": "India",
+    "state": "Delhi",
+    "city": "New Delhi",
+    "zipcode": "110001",
+    "mobileNumber": "9876543210"
+  }
+}

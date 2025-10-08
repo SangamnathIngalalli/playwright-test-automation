@@ -20,4 +20,5 @@ npm install -D @playwright/test
 # Install browsers
 npx playwright install
 
-
+# To Run
+npx playwright test tests/ui/smoke.spec.ts              

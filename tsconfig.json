@@ -63,6 +63,8 @@
     "tests/**/*.ts",
     "pages/**/*.ts",
     "api/**/*.ts",
+    "data/**/*.ts",
+    "models/**/*.ts",
     "utils/**/*.ts",
     "config/**/*.ts",
     "fixtures/**/*.ts",

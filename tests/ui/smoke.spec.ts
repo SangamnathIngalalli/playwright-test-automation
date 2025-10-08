@@ -3,6 +3,7 @@ import { test, expect } from '@fixtures/pageFixtures';
 import { AccountInfo } from '@pages/account-info.page';
 import { HomePage } from '@pages/HomePage';
 import { ProductsPage } from '@pages/ProductsPage';
+import { testLoader } from '../../data/testDataLoader';
 
 
 
@@ -37,7 +38,7 @@ import { ProductsPage } from '@pages/ProductsPage';
     });
 
 
-    test('should fill account information and create account', async  ({ loginPage, accountInfoPage }) =>{
+    test.only('should fill account information and create account', async  ({ loginPage, accountInfoPage }) =>{
 
       // Step 1: Start from login page and sign up
       await loginPage.open();
@@ -70,7 +71,8 @@ import { ProductsPage } from '@pages/ProductsPage';
         mobileNumber: '9876543210'
       };
 
-      await accountInfoPage.fillAccountForm(accountData);
+      // Fill account form with the 'validUser' data
+      await accountInfoPage.fillAccountForm(testLoader.getUser('validUser'));
 
       // Step 3: Verify account creation
       await accountInfoPage.assertAccountCreated();
@@ -80,7 +82,7 @@ import { ProductsPage } from '@pages/ProductsPage';
  
     });
 
-    test.only('should open Products in new tab, search for "Men Tshirt", and verify result', async ({ page, context }) => {
+    test('should open Products in new tab, search for "Men Tshirt", and verify result', async ({ page, context }) => {
           // Step 1: Open home page
           const homePage = new HomePage(page);
           await homePage.visit();
