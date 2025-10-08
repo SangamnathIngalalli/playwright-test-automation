@@ -48,7 +48,7 @@ export class ProductsPage extends BasePage {
 
     
     for (const productName of results) {
-      expect(productName.toLowerCase()).toContain(expectedText);
+      expect(productName).toContain(expectedText);
     }
 
 

@@ -1,6 +1,8 @@
 // tests/smoke.spec.ts
 import { test, expect } from '@fixtures/pageFixtures';
 import { AccountInfo } from '@pages/account-info.page';
+import { HomePage } from '@pages/HomePage';
+import { ProductsPage } from '@pages/ProductsPage';
 
 
 
@@ -35,7 +37,7 @@ import { AccountInfo } from '@pages/account-info.page';
     });
 
 
-    test.only('should fill account information and create account', async  ({ loginPage, accountInfoPage }) =>{
+    test('should fill account information and create account', async  ({ loginPage, accountInfoPage }) =>{
 
       // Step 1: Start from login page and sign up
       await loginPage.open();
@@ -77,4 +79,33 @@ import { AccountInfo } from '@pages/account-info.page';
       await accountInfoPage.continueToHome();
  
     });
+
+    test.only('should open Products in new tab, search for "Men Tshirt", and verify result', async ({ page, context }) => {
+          // Step 1: Open home page
+          const homePage = new HomePage(page);
+          await homePage.visit();
+
+          // Step 2: Open Products page in a NEW TAB
+          // We'll simulate Ctrl+Click (or Cmd+Click on Mac) to open in new tab
+          const [newPage] = await Promise.all([
+            context.waitForEvent('page'),
+          homePage.header.goToProductsInNewTab()
+          ]);
+
+          // Optional: Wait for new tab to load
+          await newPage.waitForLoadState('networkidle');
+
+          // Step 3: Use ProductsPage on the new tab
+          const productsPage = new ProductsPage(newPage);
+          await productsPage.searchProduct('Men Tshirt');
+
+          // Step 4: Verify search result
+          await productsPage.assertSearchResultsContain('Men Tshirt');
+
+          // Step 5: Close the new tab
+          await newPage.close();
+
+          // Optional: Verify original tab is still active
+          await expect(page).toHaveURL('/');
+      });
 }); 

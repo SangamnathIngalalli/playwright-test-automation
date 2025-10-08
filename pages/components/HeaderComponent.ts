@@ -13,6 +13,12 @@ export class HeaderComponent {
     await this.page.click('a[href="/products"]');
   }
 
+    async goToProductsInNewTab() {
+      const isMac = process.platform === 'darwin';
+      await this.page.click('a[href="/products"]', { modifiers: [isMac ? 'Meta' : 'Control'] });
+  }
+
+
   async goToCart() {
     await this.page.click('a[href="/view_cart"]');
   }
