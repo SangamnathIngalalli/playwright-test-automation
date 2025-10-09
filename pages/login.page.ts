@@ -1,6 +1,7 @@
 // pages/login.page.ts
 import { Page, Locator, expect } from '@playwright/test';
 import { BasePage } from '@pages/base.page';
+import { Config } from '@utils/Config';
 
 // Define interfaces
 export interface LoginCredentials {
@@ -42,11 +43,11 @@ export class LoginPage extends BasePage {
     this.loginButton = this.loginForm.getByRole('button', { name: /login/i });
   }
 
-  // ─────────── Actions ───────────
-  async open(): Promise<void> {
-    await this.page.goto('https://automationexercise.com/login');
+  async goToLoginPage(): Promise<void>{
+      await this.page.goto(`${Config.BASE_URL}/login`);
   }
 
+  // ─────────── Actions ───────────
   async signup(credentials: SignupCredentials): Promise<void> {
     await this.nameInput.fill(credentials.name);
     await this.signupEmailInput.fill(credentials.email);

@@ -3,6 +3,8 @@ import { Page, Locator, Response, expect } from '@playwright/test';
 import { HeaderComponent } from './components/HeaderComponent';
 import { FooterComponent } from './components/FooterComponent';
 import { WaitUtils } from '@utils/WaitUtils';
+import { Config } from '../utils/Config';
+
 
 export class BasePage {
   private wait: WaitUtils;
@@ -20,6 +22,11 @@ export class BasePage {
 
   get Page(): Page {
     return this.page;
+  }
+
+  async open(): Promise<void> {
+    console.log(Config.BASE_URL);
+    await this.page.goto(Config.BASE_URL);
   }
 
   /**

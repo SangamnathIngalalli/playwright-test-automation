@@ -11,6 +11,8 @@ import { UserBuilder } from '../../builders/UserBuilder';
 
 
 
+
+
   // ───────────────────────────────
   // Signup Tests
   // ───────────────────────────────
@@ -18,14 +20,14 @@ import { UserBuilder } from '../../builders/UserBuilder';
 
     test('should display signup form elements', async ({loginPage}) => {
 
-        await loginPage.open();                   // Navigate to login page
+        await loginPage.goToLoginPage();           // Navigate to login page
         await loginPage.assertOnLoginPage();      // Check page title
         await loginPage.assertSignupFormVisible(); // Check all signup form elements
     });
 
     test('should perform successful signup',async ({loginPage})=>{
 
-      await loginPage.open();   // Make sure you are on the login page
+      await loginPage.goToLoginPage();   // Make sure you are on the login page
 
        const testEmail = `testuser${Date.now()}@example.com`;
        const user = TestDataGenerator.generateUser();
@@ -45,7 +47,7 @@ import { UserBuilder } from '../../builders/UserBuilder';
     test('should fill account information and create account', async  ({ loginPage, accountInfoPage }) =>{
 
       // Step 1: Start from login page and sign up
-      await loginPage.open();
+      await loginPage.goToLoginPage();
 
        const testEmail = `testuser${Date.now()}@example.com`;
        const user = TestDataGenerator.generateUser();
@@ -117,7 +119,7 @@ import { UserBuilder } from '../../builders/UserBuilder';
 
     test('should create account using UserBuilder', async ({ loginPage , accountInfoPage}) => {
 
-           await loginPage.open();
+           await loginPage.goToLoginPage();
             const userName = TestDataGenerator.generateUser();
             const email = TestDataGenerator.generateEmail();
 

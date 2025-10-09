@@ -1,6 +1,8 @@
 // pages/account-info.page.ts
 import { BasePage } from '@pages/base.page';
 import { Page, expect } from '@playwright/test';
+import { Config } from '../utils/Config';
+
 
 export interface AccountInfo {
   title: string;
@@ -73,12 +75,12 @@ export class AccountInfoPage extends BasePage {
       'Account Created!'
     );
     await expect(this.accountCreatedHeader).toHaveText('Account Created!');
-    await this.waitForURL('https://automationexercise.com/account_created');
+    await this.waitForURL(`${Config.BASE_URL}/account_created`);
   }
 
   // Continue to homepage
   async continueToHome() {
     await this.continueButton.click();
-    await this.waitForURL('https://automationexercise.com/');
+    await this.waitForURL(Config.BASE_URL);
   }
 }
