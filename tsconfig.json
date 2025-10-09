@@ -68,6 +68,8 @@
     "utils/**/*.ts",
     "config/**/*.ts",
     "fixtures/**/*.ts",
+    "utils/**/*.ts",
+    
   ],
   "exclude": [
     "node_modules",

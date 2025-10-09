@@ -4,6 +4,8 @@ import { AccountInfo } from '@pages/account-info.page';
 import { HomePage } from '@pages/HomePage';
 import { ProductsPage } from '@pages/ProductsPage';
 import { testLoader } from '../../data/testDataLoader';
+import { TestDataGenerator } from '../../utils/TestDataGenerator';
+
 
 
 
@@ -24,11 +26,11 @@ import { testLoader } from '../../data/testDataLoader';
       await loginPage.open();   // Make sure you are on the login page
 
        const testEmail = `testuser${Date.now()}@example.com`;
+       const user = TestDataGenerator.generateUser();
+       const email = TestDataGenerator.generateEmail();
 
-      await loginPage.signup({
-        name: 'Sangam',
-        email: testEmail,
-      });
+
+      await loginPage.signup({name: user.firstName, email});
 
 
       await loginPage.waitForURL(/signup/i, { timeout: 15000 });
@@ -43,13 +45,12 @@ import { testLoader } from '../../data/testDataLoader';
       // Step 1: Start from login page and sign up
       await loginPage.open();
 
-      const testEmail = `testuser${Date.now()}@example.com`;
+       const testEmail = `testuser${Date.now()}@example.com`;
+       const user = TestDataGenerator.generateUser();
+       const email = TestDataGenerator.generateEmail();
 
 
-      await loginPage.signup({
-        name: 'Sangam',
-        email: testEmail,
-      });
+      await loginPage.signup({name: user.firstName, email});
 
       // Step 2: Fill account details
       const accountData: AccountInfo = {
