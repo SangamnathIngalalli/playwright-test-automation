@@ -115,7 +115,7 @@ import { UserBuilder } from '../../builders/UserBuilder';
       });
 
 
-    test.only('should create account using UserBuilder', async ({ loginPage , accountInfoPage}) => {
+    test('should create account using UserBuilder', async ({ loginPage , accountInfoPage}) => {
 
            await loginPage.open();
             const userName = TestDataGenerator.generateUser();
@@ -125,13 +125,13 @@ import { UserBuilder } from '../../builders/UserBuilder';
 
 
                const user = new UserBuilder()
-    .withName('Sangam', 'Kumar')
-    .withPassword('SecurePass!2024')
-    .withDob('10', '5', '1990')
-    .withNewsletter(true)
-    .withAddress('123 Main St', 'New Delhi', 'Delhi', '110001')
-    .withMobile('9876543210')
-    .build();
+                            .withName('Sangam', 'Kumar')
+                            .withPassword('SecurePass!2024')
+                            .withDob('10', '5', '1990')
+                            .withNewsletter(true)
+                            .withAddress('123 Main St', 'New Delhi', 'Delhi', '110001')
+                            .withMobile('9876543210')
+                            .build();
 
           // Fill account form with the 'validUser' data
       await accountInfoPage.fillAccountForm(user);
