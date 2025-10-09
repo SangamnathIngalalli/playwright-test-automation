@@ -22,7 +22,9 @@ export interface AccountInfo {
 }
 
 export class AccountInfoPage extends BasePage {
-  // Example locators
+  
+
+  // Locators
   private titleRadio = (title: string) => this.page.locator(`input[name="title"][value="${title}"]`);
   private passwordInput = this.page.locator('#password');
   private daysSelect = this.page.locator('#days');
@@ -43,6 +45,7 @@ export class AccountInfoPage extends BasePage {
   private accountCreatedHeader = this.page.locator('h2[data-qa="account-created"]');
   private continueButton = this.page.locator('a[data-qa="continue-button"]');
 
+  // Fill the account registration form
   async fillAccountForm(data: AccountInfo) {
     await this.titleRadio(data.title).check();
     await this.passwordInput.fill(data.password);
@@ -63,11 +66,17 @@ export class AccountInfoPage extends BasePage {
     await this.createAccountButton.click();
   }
 
+  // Assert that account was created
   async assertAccountCreated() {
+    await this.wait.waitForTextToAppear(
+      this.accountCreatedHeader,
+      'Account Created!'
+    );
     await expect(this.accountCreatedHeader).toHaveText('Account Created!');
     await this.waitForURL('https://automationexercise.com/account_created');
   }
 
+  // Continue to homepage
   async continueToHome() {
     await this.continueButton.click();
     await this.waitForURL('https://automationexercise.com/');

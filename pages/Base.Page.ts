@@ -2,13 +2,17 @@
 import { Page, Locator, Response, expect } from '@playwright/test';
 import { HeaderComponent } from './components/HeaderComponent';
 import { FooterComponent } from './components/FooterComponent';
+import { WaitUtils } from '@utils/WaitUtils';
 
 export class BasePage {
+  private wait: WaitUtils;
+
   readonly header: HeaderComponent;
   readonly footer: FooterComponent;
 
 
   constructor(protected page: Page) {
+    this.wait = new WaitUtils(page); // initialize once here
     this.header = new HeaderComponent(page);
     this.footer = new FooterComponent(page);
 
