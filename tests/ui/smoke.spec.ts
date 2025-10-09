@@ -1,10 +1,12 @@
 // tests/smoke.spec.ts
 import { test, expect } from '@fixtures/pageFixtures';
-import { AccountInfo } from '@pages/account-info.page';
+import { AccountInfo, AccountInfoPage } from '@pages/account-info.page';
 import { HomePage } from '@pages/HomePage';
 import { ProductsPage } from '@pages/ProductsPage';
 import { testLoader } from '../../data/testDataLoader';
 import { TestDataGenerator } from '../../utils/TestDataGenerator';
+import { UserBuilder } from '../../builders/UserBuilder';
+
 
 
 
@@ -40,7 +42,7 @@ import { TestDataGenerator } from '../../utils/TestDataGenerator';
     });
 
 
-    test.only('should fill account information and create account', async  ({ loginPage, accountInfoPage }) =>{
+    test('should fill account information and create account', async  ({ loginPage, accountInfoPage }) =>{
 
       // Step 1: Start from login page and sign up
       await loginPage.open();
@@ -111,4 +113,34 @@ import { TestDataGenerator } from '../../utils/TestDataGenerator';
           // Optional: Verify original tab is still active
           await expect(page).toHaveURL('/');
       });
+
+
+    test.only('should create account using UserBuilder', async ({ loginPage , accountInfoPage}) => {
+
+           await loginPage.open();
+            const userName = TestDataGenerator.generateUser();
+            const email = TestDataGenerator.generateEmail();
+
+                   await loginPage.signup({name: userName.firstName, email});
+
+
+               const user = new UserBuilder()
+    .withName('Sangam', 'Kumar')
+    .withPassword('SecurePass!2024')
+    .withDob('10', '5', '1990')
+    .withNewsletter(true)
+    .withAddress('123 Main St', 'New Delhi', 'Delhi', '110001')
+    .withMobile('9876543210')
+    .build();
+
+          // Fill account form with the 'validUser' data
+      await accountInfoPage.fillAccountForm(user);
+
+        // Step 3: Verify account creation
+      await accountInfoPage.assertAccountCreated();
+
+      // Step 4: Continue to home
+      await accountInfoPage.continueToHome();
+
+    });
 }); 
