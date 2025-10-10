@@ -1,11 +1,18 @@
 // src/components/FooterComponent.ts
 import { Page } from '@playwright/test';
+import { SmartLocator } from '@utils/SmartLocator';
 
 export class FooterComponent {
   constructor(private page: Page) {}
 
   async subscribeWithEmail(email: string) {
-    await this.page.fill('#susbscribe_email', email);
+   const emailInput = await SmartLocator.find(
+      this.page,
+      '#susbscribe_email', // Primary (current)
+      ['#subscribe_email', 'input[placeholder*="email" i]', 'form input[type="email"]'] // Fallbacks
+    );
+
+    await emailInput.fill(email);
     await this.page.click('#subscribe');
   }
 

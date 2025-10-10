@@ -70,7 +70,7 @@ export class AccountInfoPage extends BasePage {
 
   // Assert that account was created
   async assertAccountCreated() {
-    await this.wait.waitForTextToAppear(
+    await this.waitForElement.waitForTextToAppear(
       this.accountCreatedHeader,
       'Account Created!'
     );
