@@ -1,5 +1,4 @@
-## Task 10: Understand and Create Playwright Fixtures  
-**Day 7-8 – 5 hours**
+## Task 08: Understand and Create Playwright Fixtures  
 
 ### Goal  
 - Learn built-in fixtures and their purposes  

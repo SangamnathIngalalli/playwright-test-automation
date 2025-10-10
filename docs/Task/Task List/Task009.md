@@ -1,5 +1,4 @@
-## Task 17: Implement Multi-tab / Window Testing  
-**Day 39 – 2 hours**
+## Task 09: Implement Multi-tab / Window Testing  
 
 ### Goal  
 - Automate scenarios that spawn or depend on multiple browser windows / tabs  
