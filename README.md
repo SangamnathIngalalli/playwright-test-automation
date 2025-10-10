@@ -277,7 +277,55 @@ A quick index to my step-by-step learning and implementation notes.
 - Look at `data/` + `builders/UserBuilder.ts` for test data patterns
 - Run `npm test` then open `reports/html-report/index.html`
 
+
 ---
 
-### License
-ISC
+### Smoke Test Cases (tests/ui/smoke.spec.ts)
+
+- **Test Case 1: Display Signup Form Elements**
+  - Steps:
+    - Open the login page.
+    - Verify the page title is correct.
+    - Verify that all signup form elements (name, email, password, etc.) are visible.
+  - Expected Result: Signup form elements are displayed correctly.
+
+- **Test Case 2: Perform Successful Signup**
+  - Steps:
+    - Open the login page.
+    - Enter a valid name and unique email address.
+    - Submit the signup form.
+    - Wait for the signup confirmation page or URL.
+    - Verify that the user is redirected to the signup confirmation page.
+  - Expected Result: User is successfully signed up.
+
+- **Test Case 3: Fill Account Information and Create Account**
+  - Steps:
+    - Open the login page.
+    - Signup with a new user (name + email).
+    - Fill account information form (title, password, DOB, newsletter, address, country, city, state, ZIP, mobile).
+    - Submit the account form.
+    - Verify that account creation confirmation is displayed.
+    - Click “Continue to Home” and verify the home page opens.
+  - Expected Result: Account is successfully created and user is redirected to home page.
+
+- **Test Case 4: Open Products in New Tab, Search for "Men Tshirt", and Verify Result**
+  - Steps:
+    - Open the home page.
+    - Open the Products page in a new browser tab.
+    - Wait for the page to load.
+    - Search for “Men Tshirt”.
+    - Verify that the search results contain “Men Tshirt”.
+    - Close the new tab.
+    - Verify that the original tab is still on the home page.
+  - Expected Result: Products search works correctly in a new tab.
+
+- **Test Case 5: Create Account Using UserBuilder**
+  - Steps:
+    - Open the login page.
+    - Signup with a new user (name + email).
+    - Build a user object using UserBuilder (full name, password, DOB, newsletter, address, mobile).
+    - Fill account information form with UserBuilder data.
+    - Submit the account form.
+    - Verify that account creation confirmation is displayed.
+    - Click “Continue to Home” and verify the home page opens.
+  - Expected Result: Account is successfully created using custom user data.
