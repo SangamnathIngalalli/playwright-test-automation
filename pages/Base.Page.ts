@@ -92,9 +92,9 @@ export class BasePage {
    * Wait for page to load completely
    * @param state - Optional load state (default: 'networkidle')
    */
-  async waitForLoadState(state: 'load' | 'domcontentloaded' | 'networkidle' | 'commit' = 'networkidle'): Promise<void> {
-    await this.page.waitForLoadState(state);
-  }
+    async waitForLoadState(state: 'load' | 'domcontentloaded' | 'networkidle' = 'networkidle'): Promise<void> {
+      await this.page.waitForLoadState(state);
+    }
 
   /**
    * Get text content of an element

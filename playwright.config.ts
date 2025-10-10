@@ -19,7 +19,7 @@ export default defineConfig({
 
   // ─── Reporter ─────────────────────────────────────────
   reporter: [
-    ['html', { outputFolder: 'test-results/html-report', open: 'never' }],
+    ['html', { outputFolder: 'reports/html-report', open: 'never' }], // <- completely separate folder
     ['list']
   ],
 

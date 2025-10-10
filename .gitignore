@@ -18,6 +18,7 @@ out/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # OS generated files
 .DS_Store
@@ -34,6 +35,7 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
 
 # Test reports
 playwright-report/
@@ -53,26 +55,23 @@ coverage/
 # Temporary files
 tmp/
 temp/
-.DS_Store
-*~
 *.tmp
 *.bak
-*.swp
+
+.eslintcache
+.cache/
 
 # Playwright specific
 playwright/.cache/
 playwright/tests-output/
+playwright/.reporter-temp/
 
 # TypeScript
 *.tsbuildinfo
-*.js
-*.js.map
 
-# Browsers
-.nyc_output/
-coverage/
-*.log
+
 
 # Local configuration
 config.local.js
 .env*.local
+reports/

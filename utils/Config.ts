@@ -1,8 +1,12 @@
 // config/Config.ts
-import dotenv from 'dotenv';
-import { stagingConfig } from '../config/environments/staging';
-import { prodConfig } from '../config/environments/prod';
 import { devConfig } from '@config/environments/dev';
+import { prodConfig } from '@config/environments/prod';
+import { stagingConfig } from '@config/environments/staging';
+import dotenv from 'dotenv';
+
+
+
+
 
 
 // Load .env file

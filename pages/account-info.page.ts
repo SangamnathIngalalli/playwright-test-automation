@@ -1,7 +1,7 @@
 // pages/account-info.page.ts
 import { BasePage } from '@pages/base.page';
 import { Page, expect } from '@playwright/test';
-import { Config } from '../utils/Config';
+import { Config } from '@utils/Config';
 
 
 export interface AccountInfo {
@@ -70,10 +70,6 @@ export class AccountInfoPage extends BasePage {
 
   // Assert that account was created
   async assertAccountCreated() {
-    await this.waitForElement.waitForTextToAppear(
-      this.accountCreatedHeader,
-      'Account Created!'
-    );
     await expect(this.accountCreatedHeader).toHaveText('Account Created!');
     await this.waitForURL(`${Config.BASE_URL}/account_created`);
   }
